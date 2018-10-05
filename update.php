@@ -5,18 +5,16 @@ if (isset($_POST['submit'])){
 	$nim = $_POST['nim'];
 	$nama = $_POST['nama'];
 	$tgl_lahir =$_POST['tgl_lahir'];
+	$id = $_POST['id'];
 
-	$query = "INSERT INTO siswa(nim, nama, tgl_lahir) 
-				VALUES ('$nim','$nama','$tgl_lahir')";
+	$query = "UPDATE siswa SET nim='$nim',nama='$nama',tgl_lahir='$tgl_lahir' WHERE id='$id'";
 	$query_success = mysqli_query($conn,$query);
 	if ($query_success) {
-		echo "query sukses";
 		header("location: list.php");
 	}else{
 		echo mysql_error($conn);
-		echo "<a href='form.php'>Kembali</a>";
+		echo "<a href='edit.php'>Kembali</a>";
 	}
-	mysqli_close($conn);
 }
 
   ?>
